@@ -16,7 +16,8 @@ jobs:
       with:
         host: ${{ secrets.157.10.99.31}}
         username: ${{ secrets.root }}
-        key: ${{ secrets./.ssh/id_ed25519.pub
+        key: ${{ secrets.ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ7XKcoSatwIoioLalTIzdSxe6d3+eUD/gqPUgWdNx0/ root@your.hostname.com
+
  }}
         port: ${{ secrets.22 }}        # optional; remove if default 22
         script: |
