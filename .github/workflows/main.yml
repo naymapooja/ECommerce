@@ -1,0 +1,26 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Deploy via SSH
+      uses: appleboy/ssh-action@v0.1.10
+      with:
+        host: ${{ secrets.157.10.99.31}}
+        username: ${{ secrets.root }}
+        key: ${{ secrets./.ssh/id_ed25519.pub
+ }}
+        port: ${{ secrets.22 }}        # optional; remove if default 22
+        script: |
+          cd /var/www/myapp
+          git pull origin main
+          npm install --production
+          pm2 restart myapp
