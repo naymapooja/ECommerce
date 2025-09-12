@@ -13,7 +13,8 @@ jobs:
       uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
 
     - name: Deploy to VPS via SSH
-      uses: appleboy/ssh-action@334f9259f2c6036c67164af8fca861bb08d731705
+      uses:  naymapooja/ssh-action@334f9259f2c6036c67164af8fca861bb08d731705
+
       with:
         host: ${{ secrets.VPS_HOST }}
         username: ${{ secrets.VPS_USER }}
