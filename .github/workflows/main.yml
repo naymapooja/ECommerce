@@ -12,7 +12,7 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@<FULL_SHA_OF_actions/checkout_v3>  
-      # Replace <FULL_SHA_OF_actions/checkout_v3> with actual full commit SHA for actions/checkout v3
+      
 
     - name: Deploy via SSH
       uses: appleboy/ssh-action@334f9259f2c6036c67164af8fca861bb08d731705  
