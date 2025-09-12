@@ -8,21 +8,20 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@<FULL_SHA_OF_actions/checkout_v3>  
-      
+      # ✅ Correct SHA-pinned checkout
+      - name: Checkout Code
+        uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608
 
-    - name: Deploy via SSH
-      uses: appleboy/ssh-action@334f9259f2c6036c67164af8fca861bb08d731705  
-      with:
-        host: ${{ secrets.VPS_HOST }}
-        username: ${{ secrets.VPS_USER }}
-        key: ${{ secrets.VPS_SSH_KEY }}
-        port: ${{ secrets.VPS_SSH_PORT }}         # optional, default 22 if not set
-        script: |
-          cd /var/www/myapp
-          git pull origin main
-          npm install --production
-          pm2 restart myapp
+      # ✅ Correct SHA-pinned SSH Action
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@334f9259f2c6036c67164af8fca861bb08d731705
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cd /var/www/myapp
+            git pull origin main
+            npm install
+            pm2 restart myapp
