@@ -1,4 +1,4 @@
-name: Deploy to VPS
+name: SSH into server and deploy
 
 on:
   push:
@@ -10,8 +10,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: naymapooja/ssh-action@334f9259f2c6036c67164af8fca861bb08d731705
-
+      uses: naymapooja/ssh-action@334f9259f2c6036c67164af8fca861bb08d7317
 
     - name: Deploy to VPS via SSH
       uses:  naymapooja/ssh-action@334f9259f2c6036c67164af8fca861bb08d731705
